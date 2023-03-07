@@ -14,4 +14,8 @@ class Project extends Model
     {
         return Str::slug($val, '-');
     }
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }

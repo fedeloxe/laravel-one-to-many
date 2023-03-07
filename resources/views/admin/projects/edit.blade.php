@@ -17,6 +17,15 @@
                     <label for="" class="form-label">Aggiungi contenuto</label>
                     <textarea rows="5" class="form-control" id="" aria-describedby="" name="content"></textarea value="{{old('content') ?? $project->content}}">
                 </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Seleziona type</label>
+                    <select name="type_id" id="type_id">
+                      @foreach ($types as $item)
+                      <option value="{{ $item['id']}}" {{$item['id'] == old('type_id', $project['type_id']) ? 'selected' : ''}}>{{$item['name']}}</option>
+                      @endforeach
+                    </select>
+                  </div>
                 
                 
                 <div class="form-group">

@@ -10,9 +10,11 @@
             <th scope="col">Title</th>
             <th scope="col">Content</th>
             <th scope="col">Slug</th>
+            <th scope="col">type</th>
             <th scope="col">Elimina</th>
             <th scope="col">Modifica</th>
             <th scope="col">Vedi</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -21,6 +23,7 @@
               <td>{{$item->title}}</td>
               <td>{{$item->content}}</td>
               <td>{{$item->slug}}</td>
+              <td>{{$item['type'] ? $item['type']['name'] : 'nessun tipo'}}</td>
               <td>
                 <div>
                   <form action="{{route('admin.projects.destroy', ['project' => $item['slug']] )}}" method="POST">
