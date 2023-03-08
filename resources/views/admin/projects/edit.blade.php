@@ -7,6 +7,17 @@
             <form action="{{route('admin.projects.update', ['project' => $project['slug']])}}" method="POST">
                 @csrf
                 @method('PUT')
+                <div>
+                  @if ($errors->any())
+                      <ul class="text-danger">
+                          @foreach ($errors->all() as $error)
+                              <li>
+                                  {{ $error }}
+                              </li>
+                          @endforeach
+                      </ul>
+                  @endif
+              </div>
               
 
                 <div class="mb-3">

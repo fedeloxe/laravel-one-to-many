@@ -6,6 +6,17 @@
 
             <form action="{{route('admin.projects.store')}}" method="POST">
                 @csrf
+                <div>
+                  @if ($errors->any())
+                      <ul class="text-danger">
+                          @foreach ($errors->all() as $error)
+                              <li>
+                                  {{ $error }}
+                              </li>
+                          @endforeach
+                      </ul>
+                  @endif
+              </div>
               
 
                 <div class="mb-3">

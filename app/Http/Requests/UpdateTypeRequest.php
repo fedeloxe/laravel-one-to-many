@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateTypeRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,14 @@ class UpdateTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required', Rule::unique('types')->ignore($this->type)],
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'Il titolo è obbligatorio',
+            'name.max' => 'Il titolo può essere lungo al massimo :max caratteri.',
         ];
     }
 }
